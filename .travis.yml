@@ -13,13 +13,13 @@ matrix:
         - npm install
       script:
         - npm test
-        - npm run build
+        # - npm run build
     - env: web
       before_script:
         - cd ${TRAVIS_BUILD_DIR}/web
         - npm install
       script:
         - npm test
-        - npm run build
+        # - npm run build
 # on:
   # branch: master
