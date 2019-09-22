@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+    api:
+        build:
+            network: host
+            context: api
+            dockerfile: Dockerfile
+        image: rmd/api
+        ports:
+            - 8080:8080
+    web:
+        build:
+            network: host
+            context: web
+            dockerfile: Dockerfile
+        image: rmd/web
+        ports:
+            - 3000:3000
+        depends_on:
+            - api
