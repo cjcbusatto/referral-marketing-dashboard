@@ -6,10 +6,8 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
     async store(req, res, next) {
+        const { JWT_SECRET } = process.env;
         passport.authenticate('login', async (err, admin, info) => {
-            console.log(err);
-            console.log(admin);
-            console.log(info);
             try {
                 if (err || !admin) {
                     const error = new Error('An Error occured');
@@ -23,7 +21,7 @@ module.exports = {
                     const body = { _id: admin._id, username: admin.username };
 
                     //Sign the JWT token and populate the payload with the admin email and id
-                    const token = jwt.sign({ admin: body }, process.env.JWT_TOKEN);
+                    const token = jwt.sign({ admin: body }, process.env.JWT_SECRET);
 
                     //Send back the token to the admin
                     return res.json({ token });

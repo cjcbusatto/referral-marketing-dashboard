@@ -54,7 +54,7 @@ describe('Campaign constructor', () => {
     it('should store if the university name follows the requirements', async () => {
         // University is a null!
         const correctCampaign = {
-            university: "University",
+            university: Types.ObjectId(),
             endDate: 123,
             discountMode: Types.ObjectId(),
         };
@@ -62,7 +62,7 @@ describe('Campaign constructor', () => {
         const campaign = new Campaign(correctCampaign);
         try {
             await campaign.save();
-        } catch(err){
+        } catch (err) {
             console.error(err);
         }
 

@@ -11,9 +11,9 @@ module.exports = {
         return res.status(200).json(discountModes);
     },
     async store(req, res, next) {
-        const { rules } = req.body;
+        const { name, rules } = req.body;
 
-        const discountMode = new DiscountMode({ rules });
+        const discountMode = new DiscountMode({ name, rules });
         try {
             await discountMode.save();
 

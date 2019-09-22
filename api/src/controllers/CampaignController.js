@@ -11,7 +11,9 @@ const {
 
 module.exports = {
     async index(req, res) {
-        const campaigns = await Campaign.find();
+        const campaigns = await Campaign.find()
+            .populate('university')
+            .populate('discountMode', 'rules');
         if (campaigns.length === 0) {
             return res.status(HTTP_NO_CONTENT).send();
         }
@@ -70,7 +72,9 @@ module.exports = {
                 .json({ error: 'id must be a valid ObjectId' });
         }
 
-        const campaign = await Campaign.findById(id);
+        const campaign = await Campaign.findById(id)
+            .populate('university')
+            .populate('discountMode');
         if (!campaign) {
             return res.status(HTTP_NOT_FOUND).json({ error: 'Campaign not found' });
         }

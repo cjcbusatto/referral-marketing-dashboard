@@ -5,6 +5,7 @@ const CampaignSchema = new Schema(
         university: {
             type: Schema.Types.ObjectId,
             ref: 'University',
+            required: true,
         },
         endDate: {
             type: Number,

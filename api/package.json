@@ -4,10 +4,10 @@
     "main": "src/server.js",
     "license": "MIT",
     "scripts": {
-        "dev": "NODE_ENV=test nodemon src/server.js",
+        "dev": "NODE_ENV=prod nodemon src/server.js",
         "start": "node src/server.js",
         "test": "NODE_ENV=test mocha src/tests/* --timeout 5000 --exit",
-        "coverage": "NODE_ENV=test nyc mocha src/tests/* --exit"
+        "coverage": "NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov && codecov -t a25e4799-70be-4e73-96b3-49814e76d668"
     },
     "dependencies": {
         "axios": "^0.19.0",
