@@ -1,6 +1,6 @@
 # Referral Marketing Dashboard
 
-[![Build Status](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard.svg?branch=development)](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard) [![Known Vulnerabilities](https://snyk.io/test/github/cjcbusatto/referral-marketing-dashboard/badge.svg)](https://snyk.io/test/github/cjcbusatto/referral-marketing-dashboard) [![codecov](https://codecov.io/gh/TechnionYP5777/project-name/branch/master/graph/badge.svg)](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard)
+[![Build Status](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard.svg?branch=development)](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard) [![Known Vulnerabilities](https://snyk.io/test/github/cjcbusatto/referral-marketing-dashboard/badge.svg)](https://snyk.io/test/github/cjcbusatto/referral-marketing-dashboard) [![codecov](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard/branch/development/graph/badge.svg)](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard)
 
 ## Introduction
 
