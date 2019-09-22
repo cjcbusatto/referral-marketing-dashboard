@@ -3,5 +3,6 @@ node_modules
 *.log
 *.gz
 
-# Coveralls
-coverage
+# Test coverage
+.nyc_output
+coverage.lcov
