@@ -1,5 +1,7 @@
 # Referral Marketing Dashboard
 
+[![Build Status](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard.svg?branch=development)](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard)
+
 ## Introduction
 
 The strategy of turning customers to digital influencers about a product is becoming more and more popular nowadays. In order to increase their motivation to spread the word, companies provide some rewards to them, i.e., when someone installs an application or buy a service referred by another user, the one who invited (or a group of people) receive benefits like a discount, subscription renewed for free, etc.
