@@ -1,5 +1,6 @@
 const { Types } = require('mongoose');
 const Campaign = require('../models/Campaign');
+const Student = require('../models/Student');
 const {
     HTTP_SUCCESS,
     HTTP_NO_CONTENT,
@@ -13,7 +14,9 @@ module.exports = {
     async index(req, res) {
         const campaigns = await Campaign.find()
             .populate('university')
-            .populate('discountMode', 'rules');
+            .populate('discountMode', 'rules')
+            .populate('student');
+
         if (campaigns.length === 0) {
             return res.status(HTTP_NO_CONTENT).send();
         }
@@ -50,18 +53,32 @@ module.exports = {
     },
     async edit(req, res, next) {
         const { id } = req.params;
+        const { studentId } = req.body;
 
-        try {
-            await Campaign.updateOne({ _id: Types.ObjectId(id) }, req.body);
+        const campaign = await Campaign.findById(id);
+        if (!campaign) {
+            return res.status(HTTP_NOT_FOUND).json({ error: 'Campaign not found' });
+        }
 
-            const updatedCampaign = await Campaign.findById(id);
-            return res.status(HTTP_SUCCESS).json(updatedCampaign);
-        } catch (err) {
-            if (err.name === 'ValidationError') {
-                return res.status(HTTP_BAD_REQUEST).json({ error: err.message });
+        if (studentId && Types.ObjectId.isValid(studentId)) {
+            // Check if the Student Id exists in the database
+            const student = await Student.findById(studentId);
+            if (!student) {
+                return res.status(HTTP_NOT_FOUND).json({ error: 'Student not found' });
             }
-            console.error(err);
-            return next(err);
+            try {
+                campaign.subscriptions.push(studentId);
+                await campaign.save();
+                const updatedCampaign = await Campaign.findById(id);
+
+                return res.status(HTTP_SUCCESS).json(updatedCampaign);
+            } catch (err) {
+                if (err.name === 'ValidationError') {
+                    return res.status(HTTP_BAD_REQUEST).json({ error: err.message });
+                }
+                console.error(err);
+                return next(err);
+            }
         }
     },
     async view(req, res) {

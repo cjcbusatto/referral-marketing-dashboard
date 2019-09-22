@@ -9,13 +9,6 @@ const UniversitySchema = new Schema(
             min: [2, 'University name must have at least 2 characters'],
             max: [50, 'University name must have maximum 50 characters'],
         },
-        enrolledStudents: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Student',
-                default: '',
-            },
-        ],
     },
     { timestamps: true }
 );
@@ -24,7 +17,7 @@ UniversitySchema.statics.exists = async function exists(name) {
     const university = await this.model('University')
         .findOne({ name })
         .exec();
-    console.log(university);
+
     if (!university) {
         return false;
     }

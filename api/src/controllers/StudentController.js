@@ -1,6 +1,7 @@
 const { Types } = require('mongoose');
 const Student = require('../models/Student');
 const University = require('../models/University');
+const Campaign = require('../models/Campaign');
 
 module.exports = {
     async index(req, res) {
@@ -30,14 +31,9 @@ module.exports = {
         }
 
         // Create the Student
-        const student = new Student({ name, email });
+        const student = new Student({ name, email, university: Types.ObjectId(universityId) });
         try {
             await student.save();
-
-            // Enroll student into university
-            const university = await University.findById(universityId);
-            university.enrolledStudents.push(student);
-            await university.save();
 
             return res.status(200).json(student);
         } catch (err) {
@@ -93,11 +89,17 @@ module.exports = {
         }
         await student.remove();
 
-        // Unlink its id to the university enrolledStudents
-        const university = await University.findOne({ enrolledStudents: id });
-        university.enrolledStudents.pull(id);
-        await university.save();
+        // Unlink its id to a campaign subscription
+        try {
+            const campaign = await Campaign.findOne({ subscriptions: id });
+            if (campaign) {
+                campaign.subscriptions.pull(id);
+                await campaign.save();
+            }
 
-        return res.status(200).json(student);
+            return res.status(200).json(student);
+        } catch (err) {
+            console.error(err);
+        }
     },
 };

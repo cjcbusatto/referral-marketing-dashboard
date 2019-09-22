@@ -14,6 +14,11 @@ const StudentSchema = new Schema(
             required: true,
             validate: EMAIL_REGEX,
         },
+        university: {
+            type: Schema.Types.ObjectId,
+            ref: 'University',
+            required: true,
+        },
     },
     { timestamps: true }
 );
@@ -28,7 +33,5 @@ StudentSchema.statics.exists = async function exists(email) {
 
     return true;
 };
-
-
 
 module.exports = model('Student', StudentSchema);

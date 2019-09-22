@@ -4,7 +4,6 @@ const University = require('../models/University');
 module.exports = {
     async index(req, res) {
         const universities = await University.find();
-        console.log(universities);
         if (universities.length === 0) {
             return res.status(204).send();
         }

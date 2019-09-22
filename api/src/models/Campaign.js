@@ -11,6 +11,12 @@ const CampaignSchema = new Schema(
             type: Number,
             required: true,
         },
+        subscriptions: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Student',
+            },
+        ],
         discountMode: {
             type: Schema.Types.ObjectId,
             ref: 'DiscountMode',

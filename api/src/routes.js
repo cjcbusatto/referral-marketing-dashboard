@@ -8,9 +8,15 @@ const UniversityController = require('./controllers/UniversityController');
 const StudentController = require('./controllers/StudentController');
 const LoginController = require('./controllers/LoginController');
 const SignupController = require('./controllers/SignupController');
+const PromotionalCodeController = require('./controllers/PromotionalCodeController');
+const EmailMarketingController = require('./controllers/EmailMarketingController');
 
 // Login routes
-routes.post('/signup', passport.authenticate('signup', { session: false }), SignupController.signup);
+routes.post(
+    '/signup',
+    passport.authenticate('signup', { session: false }),
+    SignupController.signup
+);
 routes.post('/login', LoginController.store);
 
 // Campaign routes
@@ -40,4 +46,17 @@ routes.put('/students/:id', StudentController.edit);
 routes.post('/students', StudentController.store);
 routes.delete('/students/:id', StudentController.delete);
 
+// PromotionalCode routes
+routes.get('/promotionalcodes', PromotionalCodeController.index);
+routes.get('/promotionalcodes/:id', PromotionalCodeController.view);
+// routes.put('/promotionalcodes/:id', PromotionalCodeController.edit);
+routes.post('/promotionalcodes', PromotionalCodeController.store);
+routes.delete('/promotionalcodes/:id', PromotionalCodeController.delete);
+
+// EmailMarketing routes
+routes.get('/emailmarketings', EmailMarketingController.index);
+routes.get('/emailmarketings/:id', EmailMarketingController.view);
+// routes.put('/emailmarketings/:id', EmailMarketingController.edit);
+routes.post('/emailmarketings', EmailMarketingController.store);
+routes.delete('/emailmarketings/:id', EmailMarketingController.delete);
 module.exports = routes;
