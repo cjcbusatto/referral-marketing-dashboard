@@ -1,6 +1,6 @@
 # Referral Marketing Dashboard
 
-[![Build Status](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard.svg?branch=development)](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard)
+[![Build Status](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard.svg?branch=development)](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard) [![Known Vulnerabilities](https://snyk.io/test/github/cjcbusatto/referral-marketing-dashboard/badge.svg)](https://snyk.io/test/github/{username}/{repo}) [![codecov](https://codecov.io/gh/TechnionYP5777/project-name/branch/master/graph/badge.svg)](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard)
 
 ## Introduction
 
@@ -13,21 +13,25 @@ This application provides a dashboard focused on companies which work together t
 The minimal requirements, in order to run the application is to have [Docker]() and [Docker-Compose]() installed on the host.
 
 If your computer does not run Docker, or you want to build it mannualy, you would require to:
-- Install [NodeJS]()
-- Use [npm](https://www.npmjs.com/get-npm) or install [yarn](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
-- Install Dependencies
-  ```bash
-  # Using npm
-  $ cd /PATH/TO/api && npm install
-  $ cd /PATH/TO/web && npm install
 
-  # Using yarn
-  $ cd /PATH/TO/api && yarn install
-  $ cd /PATH/TO/web && yarn install
-  ```
+-   Install [NodeJS]()
+-   Use [npm](https://www.npmjs.com/get-npm) or install [yarn](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
+-   Install Dependencies
+
+    ```bash
+    # Using npm
+    $ cd /PATH/TO/api && npm install
+    $ cd /PATH/TO/web && npm install
+
+    # Using yarn
+    $ cd /PATH/TO/api && yarn install
+    $ cd /PATH/TO/web && yarn install
+    ```
+
 ## Build
 
 You can build the containers separatedly...
+
 ```bash
 # Build the API
 $ docker build -t rmd/api .
@@ -37,24 +41,29 @@ $ docker build -t rmd/web .
 ```
 
 ... or build them together using docker-compose
+
 ```bash
 $ docker-compose build
 ```
+
 ## Usage
 
 ### Using Docker
-  ```bash
-  $ docker-compose up
-  ```
+
+```bash
+$ docker-compose up
+```
 
 ### Manually
-  ```bash
-  # Start the API
-  $ cd /PATH/TO/api && npm start
 
-  # Start the Web UI
-  $ cd /PATH/TO/web && npm start
-  ```
+```bash
+# Start the API
+$ cd /PATH/TO/api && npm start
+
+# Start the Web UI
+$ cd /PATH/TO/web && npm start
+```
+
 ## LICENSE
 
 MIT License
