@@ -9,11 +9,10 @@ export default function Login({ history }) {
 
     async function handleSubmit(event) {
         event.preventDefault();
-
         const response = await api.post('/login', { username, password });
-
-        // const { _id } = response.data;
-        // history.push(`/developer/${_id}`);
+        if (response.status === 200) {
+            history.push(`/dashboard/`);
+        }
     }
 
     return (
