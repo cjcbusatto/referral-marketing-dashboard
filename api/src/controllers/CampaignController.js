@@ -1,6 +1,9 @@
 const { Types } = require('mongoose');
 const Campaign = require('../models/Campaign');
 const Student = require('../models/Student');
+const EmailMarketing = require('../models/EmailMarketing');
+const University = require('../models/University');
+
 const {
     HTTP_SUCCESS,
     HTTP_NO_CONTENT,
@@ -24,10 +27,10 @@ module.exports = {
         return res.status(HTTP_SUCCESS).json(campaigns);
     },
     async store(req, res) {
-        const { university, endDate, discountMode } = req.body;
+        const { university: universityId, endDate, discountMode } = req.body;
 
         // Look for duplicates
-        const campaignAlreadyDefined = await Campaign.findOne({ university });
+        const campaignAlreadyDefined = await Campaign.findOne({ universityId });
         if (campaignAlreadyDefined) {
             return res.status(HTTP_CONFLICT).json({
                 error: `Campaign for the university "${university}" is already defined.
@@ -35,10 +38,32 @@ module.exports = {
             });
         }
 
+        const university = await University.findById(universityId);
+        if (!university) {
+            return res.status(HTTP_NOT_FOUND).json({
+                error: `The university ${universityId} was not found, check your inputs`,
+            });
+        }
+
         // Create the campaign
-        const campaign = new Campaign({ university, endDate, discountMode });
         try {
+            const campaign = new Campaign({ university: universityId, endDate, discountMode });
             await campaign.save();
+
+            // Get all students for the university
+            const students = await Student.find({ university: university._id });
+            // Send email to all students of this university
+            const subject = `${university.name} is part of a discount group!`;
+            const content =
+                `Subscribe to the program using the link ` +
+                `http://localhost:3000/subscribe/${campaign._id}`;
+
+            const emailMarketing = new EmailMarketing({
+                subject,
+                content,
+                recipients: students,
+            });
+            await emailMarketing.save();
             return res.status(HTTP_SUCCESS).json(campaign);
         } catch (err) {
             // Check for errors during the model validation
@@ -69,8 +94,22 @@ module.exports = {
             try {
                 campaign.subscriptions.push(studentId);
                 await campaign.save();
-                const updatedCampaign = await Campaign.findById(id);
 
+                // Create an email marketing to notify user about his/her subscrition
+                const subject = 'You are now subscribed to the discount group!';
+                const content =
+                    `In the end of the promotion, you will receive a discount code to ` +
+                    `use in your purchases! Do not forget to invite your friends with the ` +
+                    `URL http://localhost:3000/subscribe/${campaign._id}`;
+
+                const emailMarketing = new EmailMarketing({
+                    subject,
+                    content,
+                    recipients: student._id,
+                });
+                await emailMarketing.save();
+
+                const updatedCampaign = await Campaign.findById(id);
                 return res.status(HTTP_SUCCESS).json(updatedCampaign);
             } catch (err) {
                 if (err.name === 'ValidationError') {

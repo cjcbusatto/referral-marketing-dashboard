@@ -1,6 +1,7 @@
 const { Types } = require('mongoose');
 const PromotionalCode = require('../models/PromotionalCode');
 const Campaign = require('../models/Campaign');
+const EmailMarketing = require('../models/EmailMarketing');
 const {
     HTTP_SUCCESS,
     HTTP_NO_CONTENT,
@@ -48,6 +49,7 @@ module.exports = {
 
         try {
             await promotionalCode.save();
+
             return res.status(HTTP_SUCCESS).json(promotionalCode);
         } catch (err) {
             // Check for errors during the model validation
