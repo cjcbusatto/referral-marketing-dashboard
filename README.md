@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard.svg?branch=development)](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard) [![codecov](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard/branch/development/graph/badge.svg)](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard)
 
+![Dashboard](assets/img/dashboard.png) ![Lading Page](assets/img/landingpage.png)
+
 ## Introduction
 
 The strategy of turning customers to digital influencers about a product is becoming more and more popular nowadays. In order to increase their motivation to spread the word, companies provide some rewards to them, i.e., when someone installs an application or buy a service referred by another user, the one who invited (or a group of people) receive benefits like a discount, subscription renewed for free, etc.
@@ -34,9 +36,11 @@ You can build the containers separatedly...
 
 ```bash
 # Build the API
+$ cd /PATH/TO/api
 $ docker build -t rmd/api .
 
 # Build the Web UI
+$ cd /PATH/TO/web
 $ docker build -t rmd/web .
 ```
 
@@ -63,6 +67,10 @@ $ cd /PATH/TO/api && npm start
 # Start the Web UI
 $ cd /PATH/TO/web && npm start
 ```
+
+## Insomnia
+
+Not all API endpoints are implemented in the Web UI, therefore, an import file for [Insomnia](https://insomnia.rest/download/), including all the API interactions, is available [here](assets/insomnia/insomnia.json) for checking purpose.
 
 ## LICENSE
 
