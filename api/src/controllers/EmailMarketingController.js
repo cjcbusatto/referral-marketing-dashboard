@@ -19,7 +19,7 @@ module.exports = {
         return res.status(HTTP_SUCCESS).json(emailMarketings);
     },
     async store(req, res) {
-        const { universityId, subject, content } = req.body;
+        const { university: universityId, subject, content } = req.body;
 
         // Get all the students from the university
         const students = await Student.find({ university: Types.ObjectId(universityId) });
