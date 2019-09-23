@@ -10,11 +10,11 @@ This application provides a dashboard focused on companies which work together t
 
 ## Requirements
 
-The minimal requirements, in order to run the application is to have [Docker]() and [Docker-Compose]() installed on the host.
+The minimal requirements, in order to run the application is to have [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/install/) installed on the host.
 
 If your computer does not run Docker, or you want to build it mannualy, you would require to:
 
--   Install [NodeJS]()
+-   Install [NodeJS](https://nodejs.org/en/download/)
 -   Use [npm](https://www.npmjs.com/get-npm) or install [yarn](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
 -   Install Dependencies
 
