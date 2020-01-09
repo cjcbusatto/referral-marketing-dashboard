@@ -20,7 +20,7 @@
     "react-scripts": "3.3.0",
     "recharts": "^1.7.1",
     "socket.io-client": "^2.2.0",
-    "snyk": "^1.271.0"
+    "snyk": "^1.230.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect"
+    "prepublish": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
