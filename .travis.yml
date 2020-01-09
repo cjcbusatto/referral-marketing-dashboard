@@ -3,6 +3,7 @@ node_js:
   - "stable"
 install:
   - npm install -g codecov
+  - npm install -g snyk
 script:
   - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
   - codecov
