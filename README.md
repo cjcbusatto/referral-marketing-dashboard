@@ -1,6 +1,6 @@
 # Referral Marketing Dashboard
 
-[![Build Status](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard.svg?branch=development)](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard) [![codecov](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard/branch/development/graph/badge.svg)](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard)
+[![Build Status](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard.svg?branch=master)](https://travis-ci.com/cjcbusatto/referral-marketing-dashboard) [![codecov](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard/branch/development/graph/badge.svg)](https://codecov.io/gh/cjcbusatto/referral-marketing-dashboard)
 
 ![Dashboard](assets/img/dashboard.png) ![Lading Page](assets/img/landingpage.png)
 
