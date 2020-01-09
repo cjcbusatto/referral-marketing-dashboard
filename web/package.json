@@ -27,8 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "snyk-protect": "snyk protect",
-    "prepublish": "yarn run snyk-protect"
+    "snyk-protect": "snyk protect"
   },
   "eslintConfig": {
     "extends": "react-app"
