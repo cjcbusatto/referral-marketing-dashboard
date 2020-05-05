@@ -3,7 +3,6 @@ node_js:
   - "stable"
 install:
   - npm install -g codecov
-  - npm install -g snyk
 script:
   - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
   - codecov
@@ -16,20 +15,14 @@ matrix:
     - env: api
       before_script:
         - cd ${TRAVIS_BUILD_DIR}/api
-        - npm install
+        - npm ci 
       script:
         - npm test
-        - snyk test
-        # - npm run build
     - env: web
       before_script:
         - cd ${TRAVIS_BUILD_DIR}/web
-        - npm install
+        - npm ci
       script:
         - npm test
-        - snyk test
-        # - npm run build
-after_success:
-  - snyk monitor
 # on:
   # branch: master
