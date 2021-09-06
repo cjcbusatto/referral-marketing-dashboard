@@ -10,7 +10,7 @@
         "coverage": "NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov && codecov -t a25e4799-70be-4e73-96b3-49814e76d668"
     },
     "dependencies": {
-        "axios": "^0.19.0",
+        "axios": "^0.21.3",
         "bcrypt": "^5.0.0",
         "body-parser": "^1.19.0",
         "compression": "^1.7.4",
